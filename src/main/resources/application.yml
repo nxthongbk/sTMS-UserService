@@ -58,7 +58,7 @@ spring:
     username: cassandra
     password: 12345678x@X
     local-datacenter: datacenter1
-    keyspace-name: scity
+    keyspace-name: stms
     request:
       timeout: 20s
     port: 9042
@@ -78,7 +78,7 @@ springdoc:
     doc-expansion: none
     disable-swagger-default-url: true
     
-scity:
+stms:
   app:
     jwtSecret: opo0lTqyBduCX0xSHT7r3PtAERr4f1Ny
     jwtRefresh: "AUTH::REFRESH::"
@@ -90,7 +90,7 @@ app:
   greeting: Hello from config file on gitlab at folder dev
   bypass-verification: 192168
   gateway:
-    domain-name: https://scity.innovation.com.vn/api
+    domain-name: https://tms.innovation.com.vn/api
 eureka:
   client:
     service-url:
