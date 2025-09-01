@@ -13,7 +13,7 @@ spring:
   #     uri: http://config:7720
 
   datasource:
-    url: jdbc:postgresql://postgresdb:5432/dbo_scity_user
+    url: jdbc:postgresql://postgresdb:5432/dbo_stms_user
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver

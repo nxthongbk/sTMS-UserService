@@ -4,4 +4,4 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    image: iotteam/scity-user-service:latest
+    image: nxthongbk/stms-user-service:latest
