@@ -18,7 +18,7 @@ spring:
     password: postgres
     driverClassName: org.postgresql.Driver
     hikari:
-      pool-name: scity-user-pool
+      pool-name: stms-user-pool
       maximum-pool-size: 50 #This means that HikariCP can maintain a maximum of 50 connections in the pool at any given time.
       max-lifetime: 1800000 # a connection is allowed to live in the pool for a maximum of 30 minutes before it is closed and removed from the pool
       idle-timeout: 300000 # after 5 minutes, if a connection is idle for longer than 5 minutes, it will be closed and removed from the pool
