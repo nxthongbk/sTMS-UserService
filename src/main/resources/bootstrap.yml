@@ -1,0 +1,117 @@
+server:
+  port: ${PORT:8801}
+  address: 0.0.0.0 
+  servlet:
+    context-path: /user
+  http2:
+    enabled: true
+spring:
+  application:
+    name: user-service
+  # cloud:
+  #   config:
+  #     uri: http://config:7720
+
+  datasource:
+    url: jdbc:postgresql://postgresdb:5432/dbo_stms_user
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+    hikari:
+      pool-name: stms-user-pool
+      maximum-pool-size: 50 #This means that HikariCP can maintain a maximum of 50 connections in the pool at any given time.
+      max-lifetime: 1800000 # a connection is allowed to live in the pool for a maximum of 30 minutes before it is closed and removed from the pool
+      idle-timeout: 300000 # after 5 minutes, if a connection is idle for longer than 5 minutes, it will be closed and removed from the pool
+      connection-timeout: 30000 #  if a connection is not available within 30 seconds, a SQLException will be thrown
+      minimum-idle: 3
+  main:
+    allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: kafka:9092
+    topic:
+      telemetry-topic: saveTelemetryTopic
+      websocket-topic: sendMessageTopic
+  data:
+    redis:
+      schedule-key: SCHEDULE_INVOICE_
+      schedule-flag-key: SCHEDULE_FLAG_INVOICE_
+      database: 4
+      port: 6379
+      timeout: 30000
+      host: redis
+      username: default
+      password: 1_Abc_123@
+  cache:
+    type: redis
+    redis:
+      time-to-live: "45000"
+      cache-null-values: "true"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: false
+  cassandra:
+    schema-action: CREATE_IF_NOT_EXISTS
+    username: cassandra
+    password: 12345678x@X
+    local-datacenter: datacenter1
+    keyspace-name: stms
+    request:
+      timeout: 20s
+    port: 9042
+    connection:
+      init-query-timeout: 20s
+      connect-timeout: 20s
+    contact-points: 10.30.5.66
+bloom-filter-permission: 100
+springdoc:
+  api-docs:
+    enabled: true
+    path: "/v3/api-docs"
+  swagger-ui:
+    path: "/swagger-ui"
+    config-url: "${server.servlet.context-path}/v3/api-docs/swagger-config"
+    url: "/api${server.servlet.context-path}/v3/api-docs"
+    doc-expansion: none
+    disable-swagger-default-url: true
+    
+stms:
+  app:
+    jwtSecret: opo0lTqyBduCX0xSHT7r3PtAERr4f1Ny
+    jwtRefresh: "AUTH::REFRESH::"
+    jwtExpirationMs: 600000
+    jwtRefreshExpirationMs: 2592000000
+    accountExpirationTime: 600000
+
+app:
+  greeting: Hello from config file on gitlab at folder dev
+  bypass-verification: 192168
+  gateway:
+    domain-name: https://tms.innovation.com.vn/api
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: discovery:${server.port}
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+logging:
+  file:
+    name: application.log
+  level:
+    root: INFO
+    org.springframework: INFO
+
+es:
+  hostname: elasticsearch
+  port: 9200
+  username: elastic
+  password: 12345678x@X
+default-system-name: Auto
