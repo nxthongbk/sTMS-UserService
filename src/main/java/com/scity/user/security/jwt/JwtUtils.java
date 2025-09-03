@@ -15,13 +15,13 @@ public class JwtUtils {
 
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-  @Value("${scity.app.jwtSecret}")
+  @Value("${stms.app.jwtSecret}")
   private String jwtSecret;
 
-  @Value("${scity.app.jwtExpirationMs}")
+  @Value("${stms.app.jwtExpirationMs}")
   private long jwtExpirationMs;
 
-  @Value("${scity.app.jwtRefreshExpirationMs}")
+  @Value("${stms.app.jwtRefreshExpirationMs}")
   private long jwtExpirationMsRefresh;
 
 //  public String generateJwtToken(UserDetailsImpl userPrincipal) {
